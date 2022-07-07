@@ -4,12 +4,20 @@ import { useCourseStore } from "store/courseStore";
 const CourseList = () => {
   const hydrated = useCourseHydration();
 
-  const { courses, removeCourse, toggleCourseStatus } = useCourseStore(
-    (state) => ({
-      courses: state.courses,
-      removeCourse: state.removeCourse,
-      toggleCourseStatus: state.toggleCourseStatus,
-    })
+  // const { courses, removeCourse, toggleCourseStatus } = useCourseStore(
+  //   (state) => ({
+  //     courses: state.courses,
+  //     removeCourse: state.removeCourse,
+  //     toggleCourseStatus: state.toggleCourseStatus,
+  //   })
+  // );
+
+  // Selectors vs destructuring - https://github.com/pmndrs/zustand/discussions/1045#discussioncomment-3044009
+
+  const courses = useCourseStore((state) => state.courses);
+  const removeCourse = useCourseStore((state) => state.removeCourse);
+  const toggleCourseStatus = useCourseStore(
+    (state) => state.toggleCourseStatus
   );
 
   if (!hydrated) {

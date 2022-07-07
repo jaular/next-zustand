@@ -15,3 +15,5 @@ export const decrement = (num: number) =>
   useCounterStore.setState((state) => ({ count: state.count - num }));
 
 export const reset = () => useCounterStore.setState({ count: 0 });
+
+// https://github.com/pmndrs/zustand/wiki/Practice-with-no-store-actions
